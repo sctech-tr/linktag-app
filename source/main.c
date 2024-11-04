@@ -74,7 +74,11 @@ int main(int argc, char **argv) {
 	tag_tex = GRRLIB_LoadTexture(tag_img);
 
 	char title[128];
-	sprintf(title, "Tag of %s", api_res->username);
+	if (api_res->username[strlen(api_res->username) - 1] == 's') {
+		sprintf(title, "%s' tag", api_res->username);
+	} else {
+		sprintf(title, "%s's tag", api_res->username);
+	}
 	while (1) {
 		WPAD_ScanPads();
 
